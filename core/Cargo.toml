@@ -1,0 +1,17 @@
+[package]
+name = "macros-core"
+version = "0.1.0"
+authors.workspace = true
+license.workspace = true
+keywords.workspace = true
+rust-version.workspace = true
+edition.workspace = true
+
+[lib]
+proc-macro = true
+
+[lints]
+workspace = true
+
+[dependencies]
+macros-lib.workspace = true

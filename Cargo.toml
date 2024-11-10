@@ -1,0 +1,55 @@
+[workspace]
+resolver = "2"
+members = ["core", "lib"]
+
+[workspace.package]
+authors = ["Elaina <17bestradiol@proton.me>"]
+license = "BSD-3-Clause"
+keywords = ["macros"]
+rust-version = "1.84"
+edition = "2021"
+version = "0.1.0"
+
+[workspace.dependencies]
+syn = { version = "^2.0", features = ["full", "extra-traits"] }
+macros-lib = { path = "lib" }
+quote = "^1.0"
+proc-macro2 = "^1.0"
+
+# Don't use allow()!
+# https://doc.rust-lang.org/nightly/cargo/reference/lints.html
+[workspace.lints.cargo]
+unknown_lints = "deny"
+
+# https://doc.rust-lang.org/rustc/lints/groups.html
+[workspace.lints.rust]
+### Lint Groups
+future_incompatible = "deny"
+keyword_idents = "deny"
+rust_2018_idioms = "deny"
+rust_2018_compatibility = "deny"
+rust_2021_compatibility = "deny"
+rust_2024_compatibility = "deny"
+let_underscore = "deny"
+nonstandard_style = "deny"
+refining_impl_trait = "deny"
+unused = "warn"
+### Overrides
+unsafe_code = { level = "deny", priority = 1 }
+unused_imports = { level = "deny", priority = 1 }
+
+# https://rust-lang.github.io/rust-clippy/master/index.html
+[workspace.lints.clippy]
+### Lint Groups
+complexity = "deny"
+correctness = "deny"
+nursery = "deny"
+pedantic = "deny"
+perf = "deny"
+style = "deny"
+suspicious = "deny"
+cargo = "deny"
+### Overrides
+cargo_common_metadata = { level = "allow", priority = 1 }
+missing_errors_doc = { level = "warn", priority = 1 }
+missing_panics_doc = { level = "warn", priority = 1 }
